@@ -21,9 +21,9 @@ JAVALIBPATH= $(CURDIR)
 # preprocess this file so it might include our local copies of library objects: libgcj_local
 com/lowagie/text/pdf/PdfEncryption.java : com/lowagie/text/pdf/PdfEncryption.java.c
 ifdef USE_LOCAL_LIBGCJ
-	cpp -C -P -DPDFTK_JAVA_LOCAL com/lowagie/text/pdf/PdfEncryption.java.c com/lowagie/text/pdf/PdfEncryption.java
+	$(GCC) -C -P -E -DPDFTK_JAVA_LOCAL $^ -o $@
 else
-	cpp -C -P com/lowagie/text/pdf/PdfEncryption.java.c com/lowagie/text/pdf/PdfEncryption.java
+	$(GCC) -C -P -E $^ $@
 endif
 
 #
